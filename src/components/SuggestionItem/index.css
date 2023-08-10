@@ -1,0 +1,13 @@
+.suggetion {
+  box-shadow: 0px 4px 16px 0px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.descrption {
+  color: #64748b;
+  font-family: 'Roboto';
+}
+.image2 {
+  width: 30px;
+}

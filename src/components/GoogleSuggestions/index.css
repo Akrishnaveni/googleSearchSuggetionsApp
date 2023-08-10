@@ -1,0 +1,27 @@
+.app-container {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.google {
+  max-width: 300px;
+  height: 100px;
+}
+.image {
+  width: 30px;
+  color: #64748b;
+}
+.input-container {
+  display: flex;
+  box-shadow: 0px 4px 16px 0px;
+  padding: 10px;
+}
+.input {
+  border: none;
+  color: #bfbfbf;
+  outline: none;
+}
+.suggestions-containe {
+  padding: 10px;
+}
