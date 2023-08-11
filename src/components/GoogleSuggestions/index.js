@@ -14,9 +14,10 @@ class GoogleSuggestions extends Component {
   }
 
   render() {
+    const {searchInput} = this.state
     const {suggestionsList} = this.props
     const searchResults = suggestionsList.filter(each =>
-      each.suggestion.includes(searchInput),
+      each.suggestion.toLowerCase().includes(searchInput.toLowerCase()),
     )
     return (
       <div className="app-container">
@@ -42,7 +43,7 @@ class GoogleSuggestions extends Component {
         </div>
         <ul className="suggestions-container">
           {searchResults.map(each => (
-            <SuggestionItem suggestion={each} key={each.id} />
+            <SuggestionItem suggestionDetails={each} key={each.id} />
           ))}
         </ul>
       </div>
@@ -51,4 +52,3 @@ class GoogleSuggestions extends Component {
 }
 
 export default GoogleSuggestions
-
