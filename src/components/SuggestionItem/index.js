@@ -2,10 +2,10 @@ import './index.css'
 
 const SuggetionItem = props => {
   const {suggestionDetails} = props
-  const {id, suggestion} = suggestionDetails
+  const {suggestion} = suggestionDetails
   return (
-    <li className="suggetion">
-      <p className="description">{suggetion}</p>
+    <li className="suggestion">
+      <p className="description">{suggestion}</p>
       <img
         src="https://assets.ccbp.in/frontend/react-js/diagonal-arrow-left-up.png"
         alt="arrow"
