@@ -3,25 +3,35 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
-.google {
+.suggestion-logo {
   max-width: 300px;
   height: 100px;
 }
 .image {
-  width: 30px;
+  width: 300px;
   color: #64748b;
 }
 .input-container {
   display: flex;
-  box-shadow: 0px 4px 16px 0px;
+  box-shadow: 1px 1px 1px 1px #bfbfbf;
+  outline: none;
   padding: 10px;
+  height: 30px;
+  width: 280px;
+  margin-top: 30px;
 }
 .input {
   border: none;
   color: #bfbfbf;
   outline: none;
 }
-.suggestions-containe {
+.suggestions-container {
   padding: 10px;
+  width: 280px;
+}
+.icon {
+  height: 20px;
+  width: 20px;
 }
