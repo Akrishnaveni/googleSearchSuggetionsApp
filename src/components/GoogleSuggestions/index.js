@@ -1,11 +1,19 @@
 import {Component} from 'react'
 
-import './index.css'
-
 import SuggestionItem from '../SuggestionItem'
 
+import './index.css'
+
 class GoogleSuggestions extends Component {
-  state = {searchInput: ''}
+  state = {
+    searchInput: '',
+  }
+
+  updateSearchInput = value => {
+    this.setState({
+      searchInput: value,
+    })
+  }
 
   onChangeSearchInput = event => {
     this.setState({
@@ -16,91 +24,46 @@ class GoogleSuggestions extends Component {
   render() {
     const {searchInput} = this.state
     const {suggestionsList} = this.props
-    const searchResults = suggestionsList.filter(each =>
-      each.suggestion.toLowerCase().includes(searchInput.toLowerCase()),
+    const searchResults = suggestionsList.filter(eachSuggestion =>
+      eachSuggestion.suggestion
+        .toLowerCase()
+        .includes(searchInput.toLowerCase()),
     )
+
     return (
       <div className="app-container">
-        <img
-          className="image"
-          alt="google logo"
-          src="https://assets.ccbp.in/frontend/react-js/google-logo.png"
-          className="google"
-        />
-        <div className="input-container">
+        <div className="google-suggestions-container">
           <img
-            src="https://assets.ccbp.in/frontend/react-js/google-search-icon.png"
-            alt="search icon"
-            className="icon"
+            src="https://assets.ccbp.in/frontend/react-js/google-logo.png"
+            alt="google logo"
+            className="google-logo"
           />
-          <input
-            type="search"
-            className="input"
-            placeholder="search Google"
-            onChange={this.onChangeSearchInput}
-            value={searchInput}
-          />
+          <div className="search-input-suggestions-container">
+            <div className="search-input-container">
+              <img
+                alt="search icon"
+                className="search-icon"
+                src="https://assets.ccbp.in/frontend/react-js/google-search-icon.png"
+              />
+              <input
+                type="search"
+                className="search-input"
+                placeholder="Search Google"
+                onChange={this.onChangeSearchInput}
+                value={searchInput}
+              />
+            </div>
+            <ul className="suggestions-list">
+              {searchResults.map(eachSuggestion => (
+                <SuggestionItem
+                  key={eachSuggestion.id}
+                  suggestionDetails={eachSuggestion}
+                  updateSearchInput={this.updateSearchInput}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
-        <ul className="suggestions-container">
-          {searchResults.map(each => (
-            <SuggestionItem suggestionDetails={each} key={each.id} />
-          ))}
-        </ul>
-      </div>
-    )
-  }
-}
-
-export default GoogleSuggestions
-import {Component} from 'react'
-
-import './index.css'
-
-import SuggestionItem from '../SuggestionItem'
-
-class GoogleSuggestions extends Component {
-  state = {searchInput: ''}
-
-  onChangeSearchInput = event => {
-    this.setState({
-      searchInput: event.target.value,
-    })
-  }
-
-  onclickArrow = () => {}
-
-  render() {
-    const {searchInput} = this.state
-    const {suggestionsList} = this.props
-    const searchResults = suggestionsList.filter(each =>
-      each.suggestion.toLowerCase().includes(searchInput.toLowerCase()),
-    )
-    return (
-      <div className="app-container">
-        <img
-          className="image"
-          alt="google logo"
-          src="https://assets.ccbp.in/frontend/react-js/google-logo.png"
-        />
-        <div className="input-container">
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/google-search-icon.png"
-            alt="search icon"
-            className="icon"
-          />
-          <input
-            type="search"
-            className="input"
-            placeholder="search Google"
-            onChange={this.onChangeSearchInput}
-            value={searchInput}
-          />
-        </div>
-        <ul className="suggestions-container">
-          {searchResults.map(each => (
-            <SuggestionItem suggestionDetails={each} key={each.id} />
-          ))}
-        </ul>
       </div>
     )
   }
